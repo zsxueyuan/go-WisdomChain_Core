@@ -7,13 +7,13 @@ GOBIN = $(shell pwd)/build/bin
 
 wisdom:
 	build/env.sh
-	go build -o ./build/bin/gwisdom ./cmd/gwisdom
+	go build -o ${GOBIN}/gwisdom ./cmd/gwisdom
 	@echo "Done building."
 
 
 
 clean:
-	rm -fr ${BUILD_TARGET}
+	rm -fr ${GOBIN}
 
 
 
