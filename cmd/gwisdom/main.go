@@ -22,8 +22,6 @@ import (
 
 	"fmt"
 	"os"
-
-	_ "gopkg.in/urfave/cli.v1"
 )
 
 
@@ -32,3 +30,10 @@ const (
 	clientIdentifier = "wisdom"
 )
 
+
+func main() {
+
+		fmt.Printf("startup")
+		os.Exit(1)
+	
+}

@@ -59,13 +59,32 @@ GLOBAL OPTIONS:
 
 
 // create a command app
-func NewApp() *cli.App {
+func NewApp(gitCommitID,usage string)) *cli.App {
 	app := cli.NewApp()
 	app.Name = filepath.Base(os.Args[0])
 	app.Author = "wisdom group"
 	app.Email = "wise_cc@outlook.com"
 	app.Version = config.VersionWithStatus()
+	if gitCommitID!="" {
+		if gitCommitID < 8 {
+			app.Version += "-"+gitCommitID
+		} else {
+			app.Version += "-" + gitCommitID[:8]
+		}
+	}
 	
-	app.Usage = "wisdom chain node"
+	app.Usage = usage
 	return app
 }
+
+
+var (
+	
+	DataDirFlag = DirectoryFlag{
+		Name:  "datadir",
+		Usage: "Data directory for the block data and keystore",
+		Value: DirectoryString{node.DefaultDataDir()},
+	}
+
+
+)
